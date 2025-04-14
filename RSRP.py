@@ -14,9 +14,9 @@ import xlwings as xw
 
 
 # Constants
-TEMPLATE_PATH = '/Users/namikisik/Desktop/SA4203_L2100_N/svt_temp.xlsx'
-OUTPUT_PATH = '/Users/namikisik/Desktop/SA4203_L2100_N/svt_report.xlsx'
-DATA_PATH = '/Users/namikisik/Desktop/SA4203_L2100_N/Export.csv'
+TEMPLATE_PATH = 'svt_temp.xlsx'
+OUTPUT_PATH = 'svt_report.xlsx'
+DATA_PATH = 'Export.csv'
 SCREENSHOT_PATH = 'map_screenshot.png'
 HTML_PATH = 'signal_map.html'
 
@@ -24,7 +24,7 @@ HTML_PATH = 'signal_map.html'
 def load_and_prepare_data():
     try:
         data = pd.read_csv(DATA_PATH)
-        data = data.set_index("Time").groupby(level=0).first()[:-28]
+        data = data.set_index("Time").groupby(level=0).first()
         # data = data[data['Band (LTE pcell)']=='LTE FDD 2100 band 1']
         df = pd.DataFrame({
             'rsrp': data["RSRP (LTE pcell)"],
